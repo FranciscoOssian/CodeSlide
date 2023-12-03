@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import './styles.scss';
 import ExportButton from './Export';
@@ -7,9 +9,18 @@ const Dock = () => {
   return (
     <div className="dock">
       <ul>
-        <ExportButton />
-        <li>light</li>
-        <Preview />
+        <li>
+          <ExportButton />
+          <div className="title">Export file</div>
+        </li>
+        <li>
+          <FontAwesomeIcon icon={faSun} />
+          <div className="title">Change bright</div>
+        </li>
+        <li>
+          <Preview />
+          <div className="title">Share to your friends</div>
+        </li>
       </ul>
     </div>
   );

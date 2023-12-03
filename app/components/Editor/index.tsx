@@ -31,7 +31,7 @@ const Editor = ({ showCode, initText = '' }: { showCode: boolean; initText?: str
   }, [inputText, debouncedUpdate, initText]);
 
   return (
-    <div className="Editor">
+    <div className={`Editor ${showCode ? '' : 'hiddenCode'}`}>
       <pre>
         <code id="raw-md">{inputText}</code>
       </pre>

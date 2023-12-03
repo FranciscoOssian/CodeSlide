@@ -4,16 +4,66 @@
   top: 50%;
   transform: translateY(-50%);
   width: 60px; /* A largura da sua dock */
-  height: 100vh;
+  height: 50vh;
   color: white;
-  background-color: #333; /* Cor de fundo da dock */
+  background-color: #333;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Sombra da dock */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px; /* Ajuste conforme necessário para o espaçamento superior */
 
   z-index: +2;
+
+  border-radius: 5%;
+
+  ul {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    li {
+      font-size: 30px;
+      position: relative;
+      &:hover {
+        font-size: 40px;
+        transition: 0.2s;
+        .title {
+          opacity: 0.7;
+          transition: 0.5s;
+          display: inline;
+          &:hover {
+            display: none;
+          }
+        }
+      }
+      .title {
+        font-size: 12px;
+        padding: 4px;
+        position: absolute;
+        top: 0;
+        right: -90px;
+        width: 60px;
+        background-color: #333;
+        border-radius: 5%;
+        opacity: 0;
+        &::after {
+          content: '';
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: #333;
+          top: 0;
+          left: -9px;
+          clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 50%);
+        }
+      }
+    }
+  }
 }
 
 /* Adicione estilos para os ícones ou elementos da dock aqui */

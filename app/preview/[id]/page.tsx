@@ -2,6 +2,7 @@
 
 import Editor from '@/app/components/Editor';
 import { useEffect, useState } from 'react';
+import styles from '../../page.module.css';
 
 export default function Page({ params }: { params: { id: string } }) {
   const [myId, setMyId] = useState<string>('');
@@ -31,5 +32,9 @@ export default function Page({ params }: { params: { id: string } }) {
         console.error('Error peer.js:', error);
       });
   }, []);
-  return <>{markdown !== '' && <Editor showCode={false} initText={markdown} />}</>;
+  return (
+    <main className={styles.MainPreviewPage}>
+      {markdown !== '' && <Editor showCode={false} initText={markdown} />}
+    </main>
+  );
 }

@@ -2,8 +2,9 @@
   width: 90%;
   height: 100vh;
   display: flex;
-
-  background-color: blue;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
   #box-out {
     overflow: scroll;
   }
@@ -17,5 +18,15 @@
 
   #raw-md {
     display: none;
+  }
+}
+
+.hiddenCode {
+  width: 100vw;
+  .MdInput {
+    display: none;
+  }
+  #box-out {
+    width: 80%;
   }
 }

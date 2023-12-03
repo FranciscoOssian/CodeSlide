@@ -1,6 +1,9 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShareFromSquare } from '@fortawesome/free-solid-svg-icons';
+import './styles.scss';
 
 function setSessionCookie(name: string, value: string) {
   document.cookie = name + '=' + value + '; path=/';
@@ -56,8 +59,8 @@ const ShareButton = () => {
   }, []);
   return (
     myId && (
-      <Link target="_blank" href={`/preview/${myId}`}>
-        Share
+      <Link className="ShareButton-anchor" target="_blank" href={`/preview/${myId}`}>
+        <FontAwesomeIcon icon={faShareFromSquare} />
       </Link>
     )
   );

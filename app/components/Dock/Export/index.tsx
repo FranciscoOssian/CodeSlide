@@ -1,8 +1,9 @@
-'use client';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileExport } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 
 const ExportButton = () => {
-  return <div onClick={() => {}}>Export</div>;
+  return <FontAwesomeIcon icon={faFileExport} />;
 };
 
 export default ExportButton;
