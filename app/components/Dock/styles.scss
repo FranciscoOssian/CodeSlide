@@ -1,0 +1,19 @@
+.dock {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px; /* A largura da sua dock */
+  height: 100vh;
+  color: white;
+  background-color: #333; /* Cor de fundo da dock */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Sombra da dock */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px; /* Ajuste conforme necessário para o espaçamento superior */
+
+  z-index: +2;
+}
+
+/* Adicione estilos para os ícones ou elementos da dock aqui */

@@ -1,0 +1,21 @@
+.Editor {
+  width: 90%;
+  height: 100vh;
+  display: flex;
+
+  background-color: blue;
+  #box-out {
+    overflow: scroll;
+  }
+  #box-out,
+  .MdInput {
+    width: 50%;
+    height: 100%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+
+  #raw-md {
+    display: none;
+  }
+}
