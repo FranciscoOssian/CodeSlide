@@ -46,7 +46,7 @@ const ShareButton = () => {
                 if (data?.header === 'request:markdown')
                   conn.send({
                     header: 'response:markdown',
-                    data: document.getElementById('raw-md')?.innerHTML,
+                    data: document.getElementById('raw-md')?.textContent,
                   });
               });
             });

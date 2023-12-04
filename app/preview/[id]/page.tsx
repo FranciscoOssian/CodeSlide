@@ -22,7 +22,6 @@ export default function Page({ params }: { params: { id: string } }) {
               header: 'request:markdown',
             });
             conn.on('data', function (data: any) {
-              console.log(data);
               if (data?.header === 'response:markdown') setMarkdown(data?.data);
             });
           });
