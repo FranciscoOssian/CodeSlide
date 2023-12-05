@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareFromSquare } from '@fortawesome/free-solid-svg-icons';
 import './styles.scss';
+import Loading from '../Loading';
 
 function setSessionCookie(name: string, value: string) {
   document.cookie = name + '=' + value + '; path=/';
@@ -58,11 +59,14 @@ const ShareButton = () => {
       });
   }, []);
   return (
-    myId && (
-      <Link className="ShareButton-anchor" target="_blank" href={`/preview/${myId}`}>
-        <FontAwesomeIcon icon={faShareFromSquare} />
-      </Link>
-    )
+    <>
+      {myId && (
+        <Link className="ShareButton-anchor" target="_blank" href={`/preview/${myId}`}>
+          <FontAwesomeIcon icon={faShareFromSquare} />
+        </Link>
+      )}
+      {!myId && <Loading />}
+    </>
   );
 };
 
