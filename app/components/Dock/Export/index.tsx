@@ -11,14 +11,14 @@ function sleep(ms: number) {
 }
 
 const ExportButton = () => {
-  const [isLoading, setIsLoafing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const handleClick = async () => {
-    setIsLoafing(true);
+    setIsLoading(true);
     setLoaded(false);
     await exportFile();
     setLoaded(true);
-    setIsLoafing(false);
+    setIsLoading(false);
   };
 
   useEffect(() => {
