@@ -11,7 +11,7 @@ const ExportButton = () => {
       const formData = new FormData();
       formData.append('file', new File([new Blob([text])], 'filename.md'));
 
-      const response = await fetch('/api/export', {
+      const response = await fetch('/api/exportWrapper', {
         method: 'POST',
         body: formData,
       });

@@ -4,6 +4,21 @@ import fs from 'fs';
 import { writeFile } from 'fs/promises';
 import { marpCli } from '@marp-team/marp-cli';
 
+/*
+  Note:
+        this endpoint receives markdown and returns the html file,
+        for this the server needs to call the marpCli module,
+        but this module did not work when tested on
+        vercel's Serverless Functions environment.
+        So as an adjustment (workaround),
+        the same repository was cloned and executed within a server in on render,
+        thus being able to execute CLI commands.
+        In the future, the idea is to build an exclusive server for using marpCli
+        and perhaps other commands, and call this server within an Api of this project.
+        Maybe what I'm saying has already changed because I'm thinking of ways (which are still workarounds)
+        to improve security even with this architecture.
+*/
+
 const upload = multer();
 
 type ResponseData = {
