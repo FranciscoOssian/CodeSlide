@@ -1,21 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import multer from 'multer';
 import FormData from 'form-data';
 import fetch from 'node-fetch';
 import stream from 'stream';
 
-const storage = multer.memoryStorage();
-const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 5 * 1024 * 1024,
-  },
-});
-
-type ResponseData = {
-  message?: string;
-  blob?: string;
-};
+import { uploadMiddlewarePromise, setHeaders, ResponseData } from './export';
 
 export const config = {
   api: {
@@ -27,23 +15,9 @@ export default async function handler(
   req: NextApiRequest & { file: any },
   res: NextApiResponse<ResponseData>
 ) {
-  const uploadMiddlewarePromise = new Promise<void>((resolve, reject) => {
-    const uploadMiddleware: any = upload.single('file');
-    uploadMiddleware(req, res, (err: any) => {
-      if (err) {
-        console.error('Erro de upload:', err);
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  });
+  await uploadMiddlewarePromise(req, res);
 
-  await uploadMiddlewarePromise;
-
-  res.setHeader('Content-Disposition', 'attachment; filename=exported.html');
-  res.setHeader('Content-Type', 'text/html');
-  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+  setHeaders(res);
 
   const run = async () => {
     if (!req.file) {

@@ -20,15 +20,16 @@ import { marpCli } from '@marp-team/marp-cli';
 */
 
 const storage = multer.memoryStorage();
-const upload = multer({
+export const upload = multer({
   storage: storage,
   limits: {
     fileSize: 5 * 1024 * 1024,
   },
 });
 
-type ResponseData = {
-  message: string;
+export type ResponseData = {
+  message?: string;
+  blob?: string;
 };
 
 export const config = {
@@ -37,11 +38,11 @@ export const config = {
   },
 };
 
-export default async function handler(
+export const uploadMiddlewarePromise = (
   req: NextApiRequest & { file: any },
   res: NextApiResponse<ResponseData>
-) {
-  const uploadMiddlewarePromise = new Promise<void>((resolve, reject) => {
+) =>
+  new Promise<void>((resolve, reject) => {
     const uploadMiddleware: any = upload.single('file');
     uploadMiddleware(req, res, (err: any) => {
       if (err) {
@@ -53,10 +54,19 @@ export default async function handler(
     });
   });
 
-  await uploadMiddlewarePromise;
-
+export const setHeaders = (res: NextApiResponse<ResponseData>) => {
   res.setHeader('Content-Disposition', 'attachment; filename=exported.html');
   res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+};
+
+export default async function handlerWrapper(
+  req: NextApiRequest & { file: any },
+  res: NextApiResponse<ResponseData>
+) {
+  await uploadMiddlewarePromise(req, res);
+
+  setHeaders(res);
 
   const tempFilePath = `/tmp/${new Date().getTime()}.md`;
   const outFilePath = `/tmp/${new Date().getTime()}.html`;
