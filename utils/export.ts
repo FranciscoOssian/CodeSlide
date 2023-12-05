@@ -1,5 +1,3 @@
-// utils/export.ts
-
 const exportFile = async () => {
   try {
     const text = document.getElementById('raw-md')?.textContent ?? '';
@@ -33,8 +31,11 @@ const exportFile = async () => {
     // Remove o link temporário
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
+
+    return true;
   } catch (error) {
     console.error('Erro:', error);
+    return false;
   }
 };
 
