@@ -19,7 +19,13 @@ import { marpCli } from '@marp-team/marp-cli';
         to improve security even with this architecture.
 */
 
-const upload = multer();
+const storage = multer.memoryStorage();
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+  },
+});
 
 type ResponseData = {
   message: string;
