@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import MdInput from '../MdInput';
 import MdOutPut from '../MdOutPut';
 import { Marp } from '@marp-team/marp-core';
-import { marked } from 'marked';
+import { registerKeyboardShortcuts } from '@/utils/keyboardShortcuts';
 
 import _ from 'lodash';
 
@@ -25,6 +25,10 @@ const Editor = ({ showCode, initText = '' }: { showCode: boolean; initText?: str
       setCss(css); //styleBox.current.innerHTML = css;
     }, 300) // Ajuste o tempo de debounce conforme necessário
   ).current;
+
+  useEffect(() => {
+    registerKeyboardShortcuts();
+  }, []);
 
   useEffect(() => {
     debouncedUpdate(inputText);
