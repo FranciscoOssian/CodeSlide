@@ -2,7 +2,7 @@
 
 const exportFile = async () => {
   try {
-    const text = document.getElementById('raw-md')?.textContent || '';
+    const text = document.getElementById('raw-md')?.textContent ?? '';
 
     const formData = new FormData();
     formData.append('file', new File([new Blob([text])], 'filename.md'));
