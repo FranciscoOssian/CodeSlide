@@ -30,7 +30,7 @@ export default function Page({ params }: { params: { id: string } }) {
       .catch((error) => {
         console.error('Error peer.js:', error);
       });
-  }, []);
+  }, [params.id]);
   return (
     <main className={styles.MainPreviewPage}>
       {markdown !== '' && <Editor showCode={false} initText={markdown} />}
