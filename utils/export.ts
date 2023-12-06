@@ -1,3 +1,5 @@
+import downloadFile from './downloadFile';
+
 const exportFile = async () => {
   try {
     const text = document.getElementById('raw-md')?.textContent ?? '';
@@ -20,17 +22,7 @@ const exportFile = async () => {
 
     const blob = await response.blob();
 
-    // Cria um link temporário para download
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'exported.html';
-    document.body.appendChild(a);
-    a.click();
-
-    // Remove o link temporário
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
+    downloadFile(blob);
 
     return true;
   } catch (error) {
