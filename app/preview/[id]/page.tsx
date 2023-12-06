@@ -3,6 +3,7 @@
 import Editor from '@/app/components/Editor';
 import { useEffect, useState } from 'react';
 import styles from '../../page.module.css';
+import Dock from '@/app/components/Dock';
 
 export default function Page({ params }: { params: { id: string } }) {
   const [myId, setMyId] = useState<string>('');
@@ -33,6 +34,7 @@ export default function Page({ params }: { params: { id: string } }) {
   }, [params.id]);
   return (
     <main className={styles.MainPreviewPage}>
+      <Dock preview />
       {markdown !== '' && <Editor showCode={false} initText={markdown} />}
     </main>
   );

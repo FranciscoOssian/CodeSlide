@@ -5,7 +5,7 @@ import './styles.scss';
 import ExportButton from './Export';
 import Preview from './Preview';
 
-const Dock = () => {
+const Dock = ({ preview }: { preview?: boolean }) => {
   return (
     <div className="dock">
       <ul>
@@ -13,14 +13,18 @@ const Dock = () => {
           <ExportButton />
           <div className="title">Export file</div>
         </li>
-        <li>
-          <FontAwesomeIcon icon={faSun} />
-          <div className="title">Change bright</div>
-        </li>
-        <li>
-          <Preview />
-          <div className="title">Share to your friends</div>
-        </li>
+        {!preview && (
+          <>
+            <li>
+              <FontAwesomeIcon icon={faSun} />
+              <div className="title">Change bright</div>
+            </li>
+            <li>
+              <Preview />
+              <div className="title">Share to your friends</div>
+            </li>
+          </>
+        )}
       </ul>
     </div>
   );
