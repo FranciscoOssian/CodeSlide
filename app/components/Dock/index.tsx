@@ -5,7 +5,7 @@ import './styles.scss';
 import ExportButton from './Export';
 import Preview from './Preview';
 
-const Dock = ({ preview }: { preview: boolean }) => {
+const Dock = ({ preview }: { preview?: boolean }) => {
   return (
     <div className="dock">
       <ul>
