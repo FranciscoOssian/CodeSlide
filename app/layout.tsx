@@ -6,8 +6,19 @@ import React from 'react';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'title',
-  description: 'app',
+  title: 'CodeSlide',
+  description: 'Create and share markdown slides.',
+  keywords: ['CodeSlide', 'markdown slides', 'presentation', 'React'],
+  authors: [{ name: 'FranciscoOssian', url: 'https://foln.dev' }],
+  alternates: { canonical: 'https://github.com/FranciscoOssian/CodeSlide' },
+  manifest: '/manifest.json',
+  openGraph: {
+    type: 'website',
+    url: 'https://codeslide.foln.dev',
+    title: 'CodeSlide',
+    description: 'Create and share markdown slides.',
+    siteName: 'CodeSlide',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -21,6 +21,18 @@
   }
 }
 
+@media (max-width: 816px) {
+  .Editor {
+    flex-direction: column;
+    width: 100%;
+    #box-out,
+    .MdInput {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
 .hiddenCode {
   width: 100vw;
   .MdInput {

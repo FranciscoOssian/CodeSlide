@@ -8,7 +8,6 @@ const Home = () => {
 
   return (
     <main className={styles.main}>
-      Editor
       <Dock />
       <Editor showCode initText={initText} />
     </main>
